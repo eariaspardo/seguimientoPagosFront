@@ -1,0 +1,47 @@
+<form [formGroup]="formLogin" (ngSubmit)="obtenerJWT($event)">
+  <div id="app">
+    <section class="section">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+            <div class="login-brand">
+              <img src="assets/img/stisla-fill.svg" alt="logo" width="100" class="shadow-light rounded-circle">
+            </div>
+
+            <div class="card card-primary">
+              <div class="card-header"><h4>Login</h4></div>
+
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="email">Usuario</label>
+                  <input id="usuario" formControlName="nombreUsuario" class="form-control" tabindex="1" required autofocus>
+                  <div class="invalid-feedback">
+                    Porfavor ingresar el Usuario
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="d-block">
+                    <label for="password" class="control-label">Password</label>
+                    <div class="float-right">
+                      <a href="auth-forgot-password.html" class="text-small">
+                        Olvidaste la contraseña?
+                      </a>
+                    </div>
+                  </div>
+                  <input id="password" type="password" class="form-control" formControlName="password" tabindex="2" required>
+                  <div class="invalid-feedback">
+                    Porfavor ingresar la Contraseña
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">Ingresar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</form>

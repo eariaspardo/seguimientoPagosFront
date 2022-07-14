@@ -1,0 +1,36 @@
+.title-card {
+  width: 100%;
+  padding: 10px 25px;
+  display: flex;
+  align-items: center;
+}
+
+.title-secundario-card {
+  width: 100%;
+  padding: 10px 25px;
+  display: flex;
+  align-items: center;
+}
+
+.not-active {
+  pointer-events: none;
+  cursor: default;
+  background-color: #a1acff;
+  border-color: #a1acff;
+}
+
+.subir{
+  padding: 5px 10px;
+  background: #f55d3e;
+  color:#fff;
+  border:0px solid #fff;
+}
+
+.subir:hover{
+  color:#fff;
+  background: #f7cb15;
+}
+
+.btn {
+  color: #fff !important;
+}

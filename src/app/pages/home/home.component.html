@@ -1,0 +1,74 @@
+<section class="section">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="card card-statistic-2">
+        <div class="card-stats">
+          <div class="card-stats-title">Total de Proyectos</div>
+          <div class="card-stats-items">
+            <div class="card-stats-item">
+              <div class="card-stats-item-count">{{resumen.proyectosAbiertos}}</div>
+              <div class="card-stats-item-label">Abiertos</div>
+            </div>
+            <div class="card-stats-item">
+              <div class="card-stats-item-count">{{resumen.proyectosCerrados}}</div>
+              <div class="card-stats-item-label">Cerrados</div>
+            </div>
+            <div class="card-stats-item">
+              <div class="card-stats-item-count">{{resumen.proyectosPausados}}</div>
+              <div class="card-stats-item-label">Pausados</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-icon shadow-primary bg-primary">
+          <i class="fas fa-archive"></i>
+        </div>
+        <div class="card-wrap">
+          <div class="card-header">
+            <h4>Total Proyectos</h4>
+          </div>
+          <div class="card-body">
+            {{resumen.totalProyectos}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="card card-statistic-2">
+        <div class="card-stats">
+          <div class="card-stats-title">Total de Inversion</div>
+          <div class="card-stats-items">
+            <p class="texto-card">Corresponde a las pagos e inversiones realizados</p>
+          </div>
+        </div>
+        <div class="card-icon shadow-primary bg-primary">
+          <i class="fas fa-dollar-sign"></i>
+        </div>
+        <div class="card-wrap">
+          <div class="card-header">
+            <h4>Total Proyectos</h4>
+          </div>
+          <div class="card-body">{{resumen.totalInversiones}} </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="card card-statistic-2">
+        <div class="card-stats">
+          <div class="card-stats-title">Total de Deudas</div>
+          <div class="card-stats-items">
+            <p class="texto-card">Corresponde al total de las deudas de los proyectos</p>
+          </div>
+        </div>
+        <div class="card-icon shadow-primary bg-primary">
+          <i class="fas fa-dollar-sign"></i>
+        </div>
+        <div class="card-wrap">
+          <div class="card-header">
+            <h4>Total Proyectos</h4>
+          </div>
+          <div class="card-body">{{resumen.totalDeudas}} </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

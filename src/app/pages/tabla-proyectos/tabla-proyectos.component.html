@@ -1,0 +1,117 @@
+<div class="row">
+  <div class="col-12 col-md-12 col-lg-12">
+    <div class="card">
+      <div class="title-card">
+        <h5>Proyecto: </h5>
+      </div>
+      <div class="title-secundario-card">
+        <h3>Viaje Cancún</h3>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered table-md">
+            <tr>
+              <th># Cuota</th>
+              <th>Valor Pago</th>
+              <th>Fecha de Pago</th>
+              <th>Realizador del Pago</th>
+              <th>Evidencia</th>
+            </tr>
+            <tr *ngFor="let cuota of detallePagos">
+              <td>{{cuota.numeroCuota}}</td>
+              <td>{{cuota.valorPagado | number}}</td>
+              <td>{{cuota.fechaPagado | date:'shortDate'}}</td>
+              <td>{{cuota.usuarioPago}}</td>
+              <td><a  class="btn btn-primary fa fa-download" [ngClass]="cuota.idAdjunto === null ? 'not-active': ''" ></a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="d-inline-block" style="margin-left: 2%;">
+        <a (click)="crearOCerrarCuotaNueva()" class="btn btn-icon icon-left btn-primary"
+          [ngClass]="crearCuota ? 'not-active': ''">
+          <i class="fas fa-plus-square"></i> Agregar Pago
+        </a>
+      </div>
+      <div class="card-footer text-center">
+        <nav class="d-inline-block">
+          <ul class="pagination mb-0">
+            <li class="page-item disabled">
+              <a class="page-link"  tabindex="-1"><i class="fas fa-chevron-left"></i></a>
+            </li>
+            <li class="page-item active"><a class="page-link" >1 <span class="sr-only">(current)</span></a></li>
+            <li class="page-item">
+              <a class="page-link" >2</a>
+            </li>
+            <li class="page-item"><a class="page-link" >3</a></li>
+            <li class="page-item">
+              <a class="page-link" ><i class="fas fa-chevron-right"></i></a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form [formGroup]="formDetallePago">
+  <div class="row" *ngIf="crearCuota">
+    <div class="col-12 col-md-12 col-lg-12">
+      <h5>Agregando Nueva Cuota </h5>
+    </div>
+    <div class="col-12 col-md-12 col-lg-12">
+      <div class="card">
+        <div class="title-card">
+          <div class="form-group col-lg-2 col-sm-12">
+            <label for="number">Cuota</label>
+            <input id="usuario" formControlName="cuota" class="form-control" tabindex="1" required autofocus>
+            <div class="invalid-feedback">
+              Porfavor ingresar el Usuario
+            </div>
+          </div>
+          <div class="form-group col-lg-5 col-sm-12">
+            <label for="number">Valor a Pagar</label>
+            <input id="usuario" formControlName="valor" class="form-control" tabindex="1" required autofocus>
+            <div class="invalid-feedback">
+              Porfavor ingresar el Usuario
+            </div>
+          </div>
+          <div class="form-group col-lg-5 col-sm-12">
+            <label for="number">Fecha de pago</label>
+            <input type="date" class="form-control" value="2017-06-01" />
+            <div class="invalid-feedback">
+              Porfavor ingresar el Usuario
+            </div>
+          </div>
+        </div>
+        <!--<form>
+          <div class="form-group col-sm-4" style="margin-left: 20px">
+            <label for="exampleFormControlFile1">Subir Evidencia de la cuota</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+          </div>
+        </form>-->
+
+        <!-- dropzonejs https://www.npmjs.com/package/ngx-dropzone -->
+        <div class="section-body">
+          <div class="row">
+            <div class="col-12">
+
+            <ngx-dropzone (change)="onSelect($event)">
+              <ngx-dropzone-label>Subir Archivo! (arrastre el archivo o de click)</ngx-dropzone-label>
+              <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+              </ngx-dropzone-preview>
+            </ngx-dropzone>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 form-group" style="margin-left: 2%;">
+          <a  class="btn btn-success"> Registrar Cuota</a>
+          <a  class="btn btn-danger" style="margin-left: 5%;" (click)="crearOCerrarCuotaNueva()"> Cerrar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+

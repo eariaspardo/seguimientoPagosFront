@@ -1,0 +1,104 @@
+<div class="row">
+  <div class="col-12 col-md-12 col-lg-12">
+    <div class="card">
+      <div class="title-card">
+        <h5>Proyecto: </h5>
+      </div>
+      <div class="title-secundario-card">
+        <h3>{{proyecto.nombreproyecto}}</h3>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+          <div class="card card-statistic-1">
+            <div class="card-icon bg-primary">
+              <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div class="card-wrap">
+              <div class="card-header">
+                <h4>Total Proyecto</h4>
+              </div>
+              <div class="card-body">
+                {{proyecto.valorproyecto}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+          <div class="card card-statistic-1">
+            <div class="card-icon bg-danger">
+              <i class="fa fa-cubes"></i>
+            </div>
+            <div class="card-wrap">
+              <div class="card-header">
+                <h4>Total Cuotas</h4>
+              </div>
+              <div class="card-body">
+                {{proyecto.cuotas}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+          <div class="card card-statistic-1">
+            <div class="card-icon bg-danger">
+              <i class="fa fa-cube"></i>
+            </div>
+            <div class="card-wrap">
+              <div class="card-header">
+                <h4>Cuotas Pagas</h4>
+              </div>
+              <div class="card-body">
+                {{cuotasPagas}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+          <div class="card card-statistic-1">
+            <div class="card-icon bg-warning">
+              <i class="fa fa-calendar"></i>
+            </div>
+            <div class="card-wrap">
+              <div class="card-header">
+                <h4>Fechas de Pago</h4>
+              </div>
+              <div class="card-body">
+                {{proyecto.fechapagos | date: 'd-M-yyyy'}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+          <div class="card card-statistic-1">
+            <div class="card-icon bg-info">
+              <i class="fa fa-calendar"></i>
+            </div>
+            <div class="card-wrap">
+              <div class="card-header">
+                <h4>Finalizacion del Proyecto</h4>
+              </div>
+              <div class="card-body">
+                {{fechaFinProyecto | date: 'd-M-yyyy'}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+          <div class="card card-statistic-1 hover-card" [routerLink]="['/home/tabla-proyectos/', id]">
+            <div class="card-icon">
+              <i class="fa fa-arrow-right" style="color: #6c757d;"></i>
+            </div>
+            <div class="card-wrap">
+              <div class="card-header">
+                <h5>Ver</h5>
+              </div>
+              <div class="card-body">
+                Detalle Pagos
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

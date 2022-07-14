@@ -1,0 +1,8 @@
+.texto-card {
+  text-align: left;
+  padding: 5px 20px;
+}
+
+.section > *:first-child {
+  margin-top: -5px;
+}

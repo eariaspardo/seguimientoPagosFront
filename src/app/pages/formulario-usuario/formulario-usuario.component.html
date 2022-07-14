@@ -1,0 +1,125 @@
+<div class="row">
+  <div class="col-12 col-md-12 col-lg-12">
+    <div class="card">
+      <div class="title-card">
+        <h5>Gestionar Proyectos </h5>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered table-md">
+            <tr>
+              <th>Nombre y Apellido</th>
+              <th>Nombre Usuario</th>
+              <th>Activo</th>
+              <th>Email</th>
+              <th>Activar o Desactivar</th>
+            </tr>
+            <tr *ngFor="let user of usuarios">
+              <td>{{user.nombreApellido}}</td>
+              <td>{{user.nombreUsuario}}</td>
+              <td [ngClass]="user.activo ? 'usuario-activo': 'usuario-no-activo'" >{{user.activo}}</td>
+              <td>{{user.email}}</td>
+              <td>
+                <a  class="btn btn-danger fa fa-window-close" ></a>
+                <a  class="btn btn-success fa fa-check-square" style="margin-left:20px"></a>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="d-inline-block" style="margin-left: 2%;">
+        <a (click)="crearOCerrarNuevoUsuario()" class="btn btn-icon icon-left btn-primary"
+            [ngClass]="crearUsuario ? 'not-active': ''">
+          <i class="fas fa-plus-square"></i> Agregar Usuario
+        </a>
+      </div>
+      <div class="card-footer text-center">
+        <nav class="d-inline-block">
+          <ul class="pagination mb-0">
+            <li class="page-item disabled">
+              <a class="page-link"  tabindex="-1"><i class="fas fa-chevron-left"></i></a>
+            </li>
+            <li class="page-item active"><a class="page-link" >1 <span class="sr-only">(current)</span></a></li>
+            <li class="page-item">
+              <a class="page-link" >2</a>
+            </li>
+            <li class="page-item"><a class="page-link" >3</a></li>
+            <li class="page-item">
+              <a class="page-link" ><i class="fas fa-chevron-right"></i></a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form [formGroup]="formUsuarioNuevo">
+  <div class="row" *ngIf="crearUsuario">
+    <div class="card" style="width: 100%">
+      <div class="title-card">
+        <h5>Nuevo Usuario </h5>
+      </div>
+      <div class="card-body">
+            <div class="row">
+              <div class="form-group col-lg-6 col-sm-12">
+                <label for="nombre">Nombre y Apellido</label>
+                <input id="nombre" formControlName="cuota" class="form-control"  required autofocus>
+                <div class="invalid-feedback">
+                  Porfavor ingresar el Nombre y Apellido
+                </div>
+              </div>
+              <div class="form-group col-lg-6 col-sm-12">
+                <label for="usuario">Nombre Usuario</label>
+                <input id="usuario" formControlName="valor" class="form-control"  required autofocus>
+                <div class="invalid-feedback">
+                  Porfavor ingresar el Usuario
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-lg-6 col-sm-12">
+                <label for="email">Email</label>
+                <input id="email" type="email" formControlName="email" class="form-control"  required autofocus>
+                <div class="invalid-feedback">
+                  Porfavor ingresar el Email
+                </div>
+              </div>
+              <div class="form-group col-lg-6 col-sm-12">
+                <label for="rol">Selecionar Rol</label>
+                <div class="form-group">
+                  <select class="form-control">
+                    <option>Usuario</option>
+                    <option>Administrados</option>
+                    <option>Super Administrador</option>
+                  </select>
+                </div>
+                <div class="invalid-feedback">
+                  Porfavor selecciona el icono
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-lg-6 col-sm-12">
+                <label for="pass1">Contraseña</label>
+                <input id="pass1" type="password" formControlName="valor" class="form-control"  required autofocus>
+                <div class="invalid-feedback">
+                  Porfavor ingresar el Email
+                </div>
+              </div>
+              <div class="form-group col-lg-6 col-sm-12">
+                <label for="pass2">Confirmar password</label>
+                <input id="pass2" type="password" formControlName="valor" class="form-control"  required autofocus>
+                <div class="invalid-feedback">
+                  Porfavor ingresar el Email
+                </div>
+              </div>
+            </div>
+          <div class="col-sm-6 form-group" style="margin-left: 2%;">
+            <a class="btn btn-success"> Registrar Cuota</a>
+            <a  class="btn btn-danger" style="margin-left: 5%;" (click)="crearOCerrarNuevoUsuario()"> Cerrar</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</form>
