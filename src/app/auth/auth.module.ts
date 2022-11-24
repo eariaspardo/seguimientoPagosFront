@@ -7,25 +7,32 @@ import { AppRoutingModule } from '../app-routing.module';
 
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { ForgetUserComponent } from './forget-user/forget-user.component';
+import { SharedModule } from '../shared/shared.module';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ForgetUserComponent
   ],
   exports:[
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ForgetUserComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule,
+    BrowserModule,
+    ReactiveFormsModule
   ]
 })
 export class AuthModule { }

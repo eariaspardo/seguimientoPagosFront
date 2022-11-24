@@ -26,9 +26,9 @@
               <td>{{pro.usuario}}</td>
               <td>{{pro.estado}}</td>
               <td>
-                <a  class="btn btn-danger fa fa-window-close" ></a>
-                <a  class="btn btn-success fa fa-check-square" style="margin-left:10px"></a>
-                <a  class="btn btn-warning fa fa-ban" style="margin-left:10px"></a>
+                <a  class="btn btn-danger fa fa-window-close" title="Cerrar proyecto"></a>
+                <a  class="btn btn-success fa fa-check-square" style="margin-left:10px" title="Activar proyecto"></a>
+                <a  class="btn btn-warning fa fa-ban" style="margin-left:10px" title="Pausar proyecto"></a>
               </td>
             </tr>
           </table>
@@ -61,8 +61,8 @@
   </div>
 </div>
 
-<form [formGroup]="formProyectoNuevo">
-  <div class="row" *ngIf="crearProyecto">
+<form [formGroup]="formProyecto" (ngSubmit)="guardarProyecto($event)" *ngIf="crearProyecto">
+  <div class="row">
     <div class="card" style="width: 100%">
       <div class="title-card">
         <h5>Nuevo Proyecto </h5>
@@ -70,33 +70,33 @@
       <div class="card-body">
             <div class="row">
               <div class="form-group col-lg-6 col-sm-12">
-                <label for="proyecto">Nombre Proyecto</label>
-                <input id="proyecto" formControlName="nombre" class="form-control" tabindex="1" required autofocus>
+                <label for="nombre">Nombre Proyecto</label>
+                <input id="nombre" formControlName="nombreProyecto" class="form-control" required >
                 <div class="invalid-feedback">
                   Porfavor ingresar el nombre del proyecto
                 </div>
               </div>
               <div class="form-group col-lg-6 col-sm-12">
                 <label for="valor">Valor del Proyecto</label>
-                <input id="valor" type="number" formControlName="valor" class="form-control" tabindex="1" required autofocus>
+                <input id="valor" type="number" formControlName="valorProyecto" class="form-control" required >
                 <div class="invalid-feedback">
-                  Porfavor ingresar el Usuario
+                  Porfavor ingresar el valor del proyecto
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="form-group col-lg-6 col-sm-12">
-                <label for="cuotas">Cuotas</label>
-                <input id="cuotas" type="number" formControlName="cuota" class="form-control" tabindex="1" required autofocus>
+                <label for="cuota">Cuotas</label>
+                <input id="cuota" type="number" formControlName="cuotaProyecto" class="form-control" required >
                 <div class="invalid-feedback">
-                  Porfavor ingresar el Usuario
+                  Porfavor ingresar la cuota
                 </div>
               </div>
               <div class="form-group col-lg-6 col-sm-12">
                 <label for="fecha">Fecha de pago</label>
-                <input type="date" class="form-control" value="2017-06-01" />
+                <input type="date" class="form-control" formControlName="fechaPago" />
                 <div class="invalid-feedback">
-                  Porfavor ingresar el Usuario
+                  Porfavor ingresar la fecha de pago
                 </div>
               </div>
             </div>
@@ -105,10 +105,8 @@
                 <label for="icono">Selecionar icono</label>
                 <div class="form-group">
                   <label>Iconos</label>
-                  <select class="form-control">
-                    <option>Carpeta</option>
-                    <option>Archivo</option>
-                    <option>Descarga</option>
+                  <select name="iconoSeleccionado" class="form-control" formControlName="iconoSeleccionado">
+                    <option [value]="item" *ngFor="let item of listIcons">{{item}}</option>
                   </select>
                 </div>
                 <div class="invalid-feedback">
@@ -116,9 +114,10 @@
                 </div>
               </div>
             </div>
+
           <div class="col-sm-6 form-group" style="margin-left: 2%;">
-            <a class="btn btn-success"> Registrar Cuota</a>
-            <a  class="btn btn-danger" style="margin-left: 5%;" (click)="crearOCerrarNuevoProyecto()"> Cerrar</a>
+            <button type="submit" class="btn btn-success"> Registrar Proyecto</button>
+            <a class="btn btn-danger" style="margin-left: 5%;" (click)="crearOCerrarNuevoProyecto()"> Cerrar</a>
           </div>
       </div>
     </div>

@@ -37,7 +37,7 @@
         <div class="card-stats">
           <div class="card-stats-title">Total de Inversion</div>
           <div class="card-stats-items">
-            <p class="texto-card">Corresponde a las pagos e inversiones realizados</p>
+            <p class="texto-card">Corresponde a las pagos e inversiones realizados para cada uno de los proyectos</p>
           </div>
         </div>
         <div class="card-icon shadow-primary bg-primary">
@@ -47,7 +47,7 @@
           <div class="card-header">
             <h4>Total Proyectos</h4>
           </div>
-          <div class="card-body">{{resumen.totalInversiones}} </div>
+          <div class="card-body">{{resumen.totalInversiones | number}} </div>
         </div>
       </div>
     </div>
@@ -66,7 +66,7 @@
           <div class="card-header">
             <h4>Total Proyectos</h4>
           </div>
-          <div class="card-body">{{resumen.totalDeudas}} </div>
+          <div class="card-body">{{resumen.totalDeudas | number}} </div>
         </div>
       </div>
     </div>

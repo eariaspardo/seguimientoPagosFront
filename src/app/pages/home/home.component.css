@@ -1,6 +1,7 @@
 .texto-card {
   text-align: left;
   padding: 5px 20px;
+  font-weight: bold;
 }
 
 .section > *:first-child {

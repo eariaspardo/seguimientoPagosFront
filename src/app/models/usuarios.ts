@@ -4,7 +4,8 @@ export class Usuarios{
   id: number = 0;
   nombreApellido: string = '';
   nombreUsuario: string = '';
-  activo: string = '';
+  activo: boolean = true;
   email: string = '';
   roles: Roles[] = [];
+  password: string = '';
 }

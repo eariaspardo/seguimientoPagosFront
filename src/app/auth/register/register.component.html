@@ -1,4 +1,4 @@
-<div id="app">
+<form [formGroup]="formUsuarioNew" (ngSubmit)="guardarUsuario($event)">
   <section class="section">
     <div class="container mt-5">
       <div class="row">
@@ -11,54 +11,57 @@
             <div class="card-header"><h4>Registro</h4></div>
 
             <div class="card-body">
-              <form method="POST">
                 <div class="row">
                   <div class="form-group col-6">
                     <label for="frist_name">Nombre Completo</label>
-                    <input id="frist_name" type="text" class="form-control" name="frist_name" autofocus>
+                    <input id="frist_name" type="text" class="form-control" formControlName="nombre" autofocus>
                   </div>
                   <div class="form-group col-6">
                     <label for="last_name">Usuario</label>
-                    <input id="last_name" type="text" class="form-control" name="last_name">
+                    <input id="last_name" type="text" class="form-control" formControlName="usuario">
                   </div>
                 </div>
                 <div class="row">
                   <div class="form-group col-6">
-                    <label>Rol</label>
-                    <select class="form-control selectric">
-                      <option>Usuario</option>
-                      <option>Administrador</option>
-                    </select>
+                    <label for="rol">Selecionar Rol</label>
+                    <div class="form-group">
+                      <select name="rolSeleccionado" class="form-control" formControlName="rolSeleccionado">
+                        <option *ngFor="let rol of listRoles" [ngValue]="rol.rol">{{rol.name}}</option>
+                      </select>
+                    </div>
                   </div>
                   <div class="form-group col-6">
                     <label for="email">Email</label>
-                    <input id="email" type="email" class="form-control" name="email">
+                    <input id="email" type="email" class="form-control" formControlName="email">
                     <div class="invalid-feedback"></div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="form-group col-6">
                     <label for="password" class="d-block">Password</label>
-                    <input id="password" type="password" class="form-control pwstrength" data-indicator="pwindicator" name="password">
-                    <div id="pwindicator" class="pwindicator">
-                      <div class="bar"></div>
-                      <div class="label"></div>
+                    <input id="pass1" type="password" formControlName="contrasena" class="form-control"  required autofocus>
+                    <div class="invalid-feedback">
+                      Porfavor ingresar la contraseña
                     </div>
                   </div>
                   <div class="form-group col-6">
                     <label for="password2" class="d-block">Password Confirmation</label>
-                    <input id="password2" type="password" class="form-control" name="password-confirm">
+                    <input id="pass2" type="password" formControlName="contrasenaValidar" class="form-control"  required autofocus>
+                    <div class="invalid-feedback">
+                      Porfavor ingresar el contraseña
+                    </div>
                   </div>
                 </div>
                 <div class="form-group">
-                  <button type="submit" class="btn btn-primary btn-lg btn-block">
-                    Registrar
-                  </button>
+                  <button type="submit" class="btn btn-primary btn-lg btn-block">Registrar</button>
                 </div>
-              </form>
+                <div class="form-group">
+                  <a class="texto-activo" [routerLink]="'/login'">Regresar al Login</a>
+                </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+</form>

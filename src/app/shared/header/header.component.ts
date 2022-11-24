@@ -27,8 +27,19 @@ export class HeaderComponent implements OnInit {
   }
 
   modoOscuro(){
-    const body  = document.querySelector('body')!;
-    body.classList.toggle('darkmode');
+    // Get HTML head element
+    var head = document.getElementsByTagName('HEAD')[0];
+
+    // Create new link Element
+    var link = document.createElement('link');
+
+    // set the attributes for link element
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = './assets/css/modo_oscuro.css';
+
+    // Append link element to HTML head
+    head.appendChild(link);
   }
 
 }

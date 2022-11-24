@@ -11,6 +11,8 @@ import { BrowserModule } from '@angular/platform-browser'
 import { TablaProyectosComponent } from './tabla-proyectos/tabla-proyectos.component';
 import { FormularioProyectoComponent } from './formulario-proyecto/formulario-proyecto.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { HomeComponent } from './home/home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -20,19 +22,22 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     FormularioProyectoComponent,
     DetalleProyectoComponent,
     TablaProyectosComponent,
-    FormularioProyectoComponent
+    FormularioProyectoComponent,
+    HomeComponent
   ],
   exports: [
     PagesComponent
   ],
   imports: [
     FormsModule,
-    ReactiveFormsModule,
     CommonModule,
+    ReactiveFormsModule,
     SharedModule,
-    AppRoutingModule,
     BrowserModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    AppRoutingModule
   ]
 })
 export class PagesModule { }

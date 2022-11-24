@@ -20,8 +20,8 @@
               <td [ngClass]="user.activo ? 'usuario-activo': 'usuario-no-activo'" >{{user.activo}}</td>
               <td>{{user.email}}</td>
               <td>
-                <a  class="btn btn-danger fa fa-window-close" ></a>
-                <a  class="btn btn-success fa fa-check-square" style="margin-left:20px"></a>
+                <a  class="btn btn-danger fa fa-window-close" title="Desactivar Usuario" (click)="activarODesactivarUsuario(false, user.id)"></a>
+                <a  class="btn btn-success fa fa-check-square" style="margin-left:20px" title="Activar Usuario" (click)="activarODesactivarUsuario(true, user.id)"></a>
               </td>
             </tr>
           </table>
@@ -54,7 +54,7 @@
   </div>
 </div>
 
-<form [formGroup]="formUsuarioNuevo">
+<form [formGroup]="formUsuarioNuevo" (ngSubmit)="guardarUsuario($event)">
   <div class="row" *ngIf="crearUsuario">
     <div class="card" style="width: 100%">
       <div class="title-card">
@@ -64,14 +64,14 @@
             <div class="row">
               <div class="form-group col-lg-6 col-sm-12">
                 <label for="nombre">Nombre y Apellido</label>
-                <input id="nombre" formControlName="cuota" class="form-control"  required autofocus>
+                <input id="nombre" formControlName="nombre" class="form-control"  required autofocus>
                 <div class="invalid-feedback">
                   Porfavor ingresar el Nombre y Apellido
                 </div>
               </div>
               <div class="form-group col-lg-6 col-sm-12">
                 <label for="usuario">Nombre Usuario</label>
-                <input id="usuario" formControlName="valor" class="form-control"  required autofocus>
+                <input id="usuario" formControlName="usuario" class="form-control"  required autofocus>
                 <div class="invalid-feedback">
                   Porfavor ingresar el Usuario
                 </div>
@@ -88,35 +88,31 @@
               <div class="form-group col-lg-6 col-sm-12">
                 <label for="rol">Selecionar Rol</label>
                 <div class="form-group">
-                  <select class="form-control">
-                    <option>Usuario</option>
-                    <option>Administrados</option>
-                    <option>Super Administrador</option>
+                  <select name="rolSeleccionado" class="form-control" formControlName="rolSeleccionado">
+                    <option *ngFor="let rol of listRoles" [ngValue]="rol.rol">{{rol.name}}</option>
                   </select>
                 </div>
-                <div class="invalid-feedback">
-                  Porfavor selecciona el icono
-                </div>
+                <div class="invalid-feedback">Porfavor selecciona el Rol</div>
               </div>
             </div>
             <div class="row">
               <div class="form-group col-lg-6 col-sm-12">
                 <label for="pass1">Contraseña</label>
-                <input id="pass1" type="password" formControlName="valor" class="form-control"  required autofocus>
+                <input id="pass1" type="password" formControlName="contrasena" class="form-control"  required autofocus>
                 <div class="invalid-feedback">
-                  Porfavor ingresar el Email
+                  Porfavor ingresar la contraseña
                 </div>
               </div>
               <div class="form-group col-lg-6 col-sm-12">
                 <label for="pass2">Confirmar password</label>
-                <input id="pass2" type="password" formControlName="valor" class="form-control"  required autofocus>
+                <input id="pass2" type="password" formControlName="contrasenaValidar" class="form-control"  required autofocus>
                 <div class="invalid-feedback">
-                  Porfavor ingresar el Email
+                  Porfavor ingresar el contraseña
                 </div>
               </div>
             </div>
           <div class="col-sm-6 form-group" style="margin-left: 2%;">
-            <a class="btn btn-success"> Registrar Cuota</a>
+            <button type="submit" class="btn btn-success"> Registrar Usuario</button>
             <a  class="btn btn-danger" style="margin-left: 5%;" (click)="crearOCerrarNuevoUsuario()"> Cerrar</a>
           </div>
       </div>

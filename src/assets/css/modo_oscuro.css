@@ -1,0 +1,30 @@
+.navbar-bg {
+  background-color: #292a3f !important;
+}
+
+body {
+  background-color: #201f27 !important;
+}
+
+.main-sidebar {
+  background-color: #6777ef !important;
+}
+
+.main-sidebar .sidebar-menu li a {
+  color: #ffffff !important;
+}
+
+.main-sidebar .sidebar-brand a {
+  color: #fff;
+}
+
+.card {
+  background-color: #292a3f !important;
+  color: #fff !important;
+  box-shadow: 0 2px 6px #acb5f6 !important;
+}
+
+body.sidebar-mini .main-sidebar:after {
+  background-color: #6777ef !important;
+  color: #fff !important;
+}

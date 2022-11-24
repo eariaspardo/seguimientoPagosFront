@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params, Router, UrlSegment } from '@angular/router';
 import { DetallePago } from 'src/app/models/detallePago';
 import { ProyectosService } from 'src/app/services/proyectos.service';
 
@@ -16,6 +16,12 @@ export class TablaProyectosComponent implements OnInit {
   crearCuota !: boolean;
   files: File[] = [];
   formDetallePago!: FormGroup;
+  infoCuota : DetallePago = new DetallePago();
+  usuarioID = localStorage.getItem('idUsuario')+"";
+
+  //Recuperar el Id del proyecto de la URL
+  path = this.activatedRoute.snapshot.url.join('/').split('/');
+  proyectoID = Number(this.path[this.path.length-1]);
 
   constructor(
     private proyectoService : ProyectosService,
@@ -39,6 +45,7 @@ export class TablaProyectosComponent implements OnInit {
     this.formDetallePago = this.formBuilder.group({
       cuota: ['',  [Validators.required]],
       valor: ['', [Validators.required]],
+      fechaCuota: ['', [Validators.required]],
     });
   }
 
@@ -65,6 +72,25 @@ export class TablaProyectosComponent implements OnInit {
   onRemove(event : any) {
     console.log(event);
     this.files.splice(this.files.indexOf(event), 1);
+  }
+
+  guardarDetalleOCuota(event: Event){
+    this.infoCuota.numeroCuota = this.formDetallePago.value.cuota;
+    this.infoCuota.valorPagado = this.formDetallePago.value.valor;
+    this.infoCuota.fechaPagado = this.formDetallePago.value.fechaCuota;
+    this.infoCuota.usuarioPago = Number(this.usuarioID);
+    this.infoCuota.idAdjunto != null;
+    this.infoCuota.idProyecto = this.proyectoID;
+
+    this.proyectoService.guardarDetalleProyecto(this.infoCuota).subscribe(
+      data => {
+        window.location.reload();
+      },
+      err =>{
+        alert('no se logro Guardar el detalle de la Cuota');
+      }
+    );
+
   }
 
 }

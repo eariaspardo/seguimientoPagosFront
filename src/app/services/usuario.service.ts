@@ -32,4 +32,16 @@ export class UsuarioService {
     return this.http.get<Usuarios>(`${this.urlUsuario}logueado`, httpOptions);
   }
 
+  public guardarUsuario(usuario : Usuarios) : Observable<Usuarios>{
+    let token = this.tokenService.consultarJWTLocalSession();
+    this.cabecera = new HttpHeaders().set('Content-Type','application/json').set('Authorization', token);
+    return this.http.post<Usuarios>(`${this.urlUsuario}guardar`, usuario, {headers : this.cabecera});
+  }
+
+  public activarODesactivarUsuario(usuario : Usuarios) : Observable<Usuarios>{
+    let token = this.tokenService.consultarJWTLocalSession();
+    this.cabecera = new HttpHeaders().set('Content-Type','application/json').set('Authorization', token);
+    return this.http.put<Usuarios>(`${this.urlUsuario}actualizarEstado`, usuario, {headers : this.cabecera});
+  }
+
 }

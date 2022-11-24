@@ -20,9 +20,11 @@ export class LoginComponent implements OnInit {
     private router : Router,
     private loginService : TokenService,
     private usuarioService : UsuarioService,
-    private formBuilder : FormBuilder)
+    private formBuilder : FormBuilder,
+    private tokenService : TokenService)
     {
       this.buildForm();
+      //this.creaJWTTemporal();
      }
 
   ngOnInit(): void {
@@ -33,6 +35,11 @@ export class LoginComponent implements OnInit {
       nombreUsuario: ['',  [Validators.required]],
       password: ['', [Validators.required]],
     });
+  }
+
+  // Metodo para crear una token temporal en cache para el acceso a la aplicacion
+  creaJWTTemporal(){
+    localStorage.setItem('jwt', '12356uytrdf');
   }
 
   obtenerJWT(event: Event){
@@ -59,10 +66,16 @@ export class LoginComponent implements OnInit {
   private consultarInforUsuario(token : string){
     this.usuarioService.consultarInfoUsuarioLogueado(token).subscribe(
       (info : Usuarios) =>{
-        localStorage.setItem('nombreUsuario', info.nombreUsuario);
-        localStorage.setItem('idUsuario', info.id+'');
-        localStorage.setItem('roles', JSON.stringify(info.roles));
-        localStorage.setItem('nombreApellido', info.nombreApellido);
+        if(info.activo){
+          localStorage.setItem('nombreUsuario', info.nombreUsuario);
+          localStorage.setItem('nombreApellido', info.nombreApellido);
+          localStorage.setItem('idUsuario', info.id+'');
+          localStorage.setItem('roles', JSON.stringify(info.roles));
+        }else{
+          alert("El Usuario se encuentra Desactivado")
+          this.tokenService.logOut();
+          window.location.reload();
+        }
       },
       err => {
         alert('Error al consultar la informacion del Usuario: ');
