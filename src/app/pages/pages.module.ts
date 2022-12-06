@@ -13,6 +13,7 @@ import { FormularioProyectoComponent } from './formulario-proyecto/formulario-pr
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     NgxDropzoneModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgChartsModule
   ]
 })
 export class PagesModule { }

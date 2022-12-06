@@ -38,7 +38,7 @@ export class DetalleProyectoComponent implements OnInit {
       data => {
         this.proyecto = data;
         this.cuotasPagas = data.detallesPagos.length;
-        //this.fechaFinProyecto = new Date(data.fechapagos.setMonth(data.fechapagos.getMonth() + data.cuotas));
+        this.fechaFinProyecto = new Date(data.fechapagos.setMonth(data.fechapagos.getMonth() + data.cuotas));
       },
       err =>{
         alert('no se logro consultar el Proyecto');

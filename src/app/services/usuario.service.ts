@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Usuarios } from '../models/usuarios';
 import {Router} from '@angular/router';
 import { TokenService } from './token.service';
+import { Roles } from '../models/roles';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,14 @@ export class UsuarioService {
     let token = this.tokenService.consultarJWTLocalSession();
     this.cabecera = new HttpHeaders().set('Content-Type','application/json').set('Authorization', token);
     return this.http.put<Usuarios>(`${this.urlUsuario}actualizarEstado`, usuario, {headers : this.cabecera});
+  }
+
+  public consultarRolesUsuario() : Roles[]{
+    let roles = localStorage.getItem('roles');
+    if(roles === null || roles === undefined){
+      this.router.navigate(['login']);
+    }
+      return JSON.parse(roles+'');
   }
 
 }

@@ -56,7 +56,7 @@ export class FormularioProyectoComponent implements OnInit {
   }
 
   consultarProyectos(){
-    this.proyectosService.consultarTodosLosProyectos().subscribe(
+    this.proyectosService.consultarProyectosPorUsuario().subscribe(
       data => {
         this.proyectos = data;
       },

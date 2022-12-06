@@ -28,3 +28,12 @@ body.sidebar-mini .main-sidebar:after {
   background-color: #6777ef !important;
   color: #fff !important;
 }
+
+.card-stats-title{
+  font-weight: bold !important;
+  color: #5e5e5e !important;
+}
+
+.card.card-statistic-2 .card-body {
+  color: #b1b8e7 !important;
+}
